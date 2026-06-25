@@ -28,7 +28,7 @@ Expressão Simplificada:
 
 <img width="1367" height="499" alt="image" src="https://github.com/user-attachments/assets/e39d654c-aa1c-44dd-a67d-66166f027096" />
 
-O comparador de 4 bits tem saida 1 quando as duas entradas de 4 bits são igausi, e 0 caso contrário.
+O comparador de 4 bits tem saida 1 quando as duas entradas de 4 bits são iguais, e 0 caso contrário.
 
 Primeiramente, cada bit de cada entrada é dividida pelo splitter (<img width="84" height="101" alt="image" src="https://github.com/user-attachments/assets/bb55fd7a-4de1-4a20-b208-ed415ccdb702" />) e estes bits individuais são postos em pares (primeiro bit da primeira entrada A com o primeiro bit da segunda entrada, segundo bit da primeira entrada com o segundo bit da segunda entrada, etc) e cada um destes pares são postos como entradas de um de quatro comparadores de 1 bit.
 
@@ -84,7 +84,7 @@ Temos um multiplexador que seleciona entre X - Y e Y - X baseado no B<sub>out</s
 
 Dada uma entrada de 4 bits X = X<sub>3</sub>X<sub>2</sub>X<sub>1</sub>X<sub>0</sub>, o LeftShift de 4 bits tem como saída um S = X<sub>3</sub>X<sub>2</sub>X<sub>1</sub>X<sub>0</sub>0000 de 8 bits.
 
-Faz-se um encadeamento de 4 extensores de bit de tipo input, cada um recebendo um o anterior como entrada principal (o primeiro recebendo a constante 0 de 4 bits) tendo como saída um bit a mais que sua entrada, e como entrada secundária um dos bits da entrada do circuito.
+Faz-se um encadeamento de 4 extensores de bit de tipo input, cada um recebendo o anterior como entrada principal (o primeiro recebendo a constante 0 de 4 bits) tendo como saída um bit a mais que sua entrada, e como entrada secundária um dos bits da entrada do circuito.
 
 
 
