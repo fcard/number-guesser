@@ -15,7 +15,7 @@ Tabela Verdade:
 | 1 | 0 | 0 |
 | 1 | 1 | 1 |
 
-Mapa de karnaugh:
+Mapa de Karnaugh:
 
 <img width="368" height="358" alt="image" src="https://github.com/user-attachments/assets/d114cf89-a44b-495b-9023-dcb71df4b1fd" />
 
@@ -30,7 +30,7 @@ Expressão Simplificada:
 
 O comparador de 4 bits tem saida 1 quando as duas entradas de 4 bits são iguais, e 0 caso contrário.
 
-Primeiramente, cada bit de cada entrada é dividida pelo splitter (<img width="84" height="101" alt="image" src="https://github.com/user-attachments/assets/bb55fd7a-4de1-4a20-b208-ed415ccdb702" />) e estes bits individuais são postos em pares (primeiro bit da primeira entrada A com o primeiro bit da segunda entrada, segundo bit da primeira entrada com o segundo bit da segunda entrada, etc) e cada um destes pares são postos como entradas de um de quatro comparadores de 1 bit.
+Primeiramente, cada bit de cada entrada é dividida pelo splitter (<img width="84" height="101" alt="image" src="https://github.com/user-attachments/assets/bb55fd7a-4de1-4a20-b208-ed415ccdb702" />) e estes bits individuais são postos em pares (primeiro bit da primeira entrada com o primeiro bit da segunda entrada, segundo bit da primeira entrada com o segundo bit da segunda entrada, etc) e cada um destes pares são postos como entradas de um de quatro comparadores de 1 bit.
 
 <img width="743" height="538" alt="image" src="https://github.com/user-attachments/assets/d098bcc6-a1e9-46c9-9860-ee9e74824230" />
 
@@ -117,13 +117,13 @@ O circuito foi criado com a ferramenta de analise combinatória do Logisim.
 
 <img width="1289" height="934" alt="image" src="https://github.com/user-attachments/assets/379f1d17-1730-466b-aeff-eb5d2c8eaf56" />
 
-O circuito principal se tratando do comportamento do jogo. Tem como entrada o "chute" do jogador (número a ser comparado com o número secreto interno), um bit de confirmação e um bit que reinicia o número secreto. As saída são:
+O circuito principal se tratando do comportamento do jogo. Tem como entrada o "chute" do jogador (número a ser comparado com o número secreto interno), um bit de confirmação e um bit que reinicia o número secreto. As saídas são:
 
-O bit que liga o LED direito: 1 quando o chute do jogador é exatamente igual ao número secreto e o bit de confirmação é 1. Simplesmente usa-se o comparador de 4 bits para comparar os números e usa-se um AND entre o resultadado da comparação e o bit de confirmação.
+O bit que liga o LED direito: 1 quando o chute do jogador é exatamente igual ao número secreto e o bit de confirmação é 1. Simplesmente usa-se o comparador de 4 bits para comparar os números e usa-se um AND entre o resultado da comparação e o bit de confirmação.
 
-A cor vermelha do LED esquerdo: O LED brilha com cor mais vermelha quanto menor a diferença. Usamos um subtrator de 4 bits e um leftshifter de 4 bits para fazer com que o valor final seja `(15 - D) << 4`, ou `(15 - D) * 16`, onde D é a diferença. Usamos um AND para que o LED só tenha qualquer quantidade de vermelho quando o bit de confirmação for 1 e o LED direito esteja apagado.
+A cor vermelha do LED esquerdo: O LED brilha com cor mais vermelha quanto menor a diferença entre o chute e o número secreto. Usamos um subtrator de 4 bits e um leftshifter de 4 bits para fazer com que o valor final seja `(15 - D) << 4`, ou `(15 - D) * 16`, onde D é a diferença. Usamos um AND para que o LED só tenha qualquer quantidade de vermelho quando o bit de confirmação for 1 e o LED direito esteja apagado.
 
-A cor azul do LED esquerdo: O LED brilha com cor mais azul quanto maior a diferença. Usamos um leftshifter de 4 bits para fazer com que o valor final seja `D << 4`, ou `D * 16`, onde D é a diferença. Usamos um AND para que o LED só tenha qualquer quantidade de azul quando o bit de confirmação for 1 e o LED direito esteja apagado.
+A cor azul do LED esquerdo: O LED brilha com cor mais azul quanto maior a diferença entre o chute e o número secreto. Usamos um leftshifter de 4 bits para fazer com que o valor final seja `D << 4`, ou `D * 16`, onde D é a diferença. Usamos um AND para que o LED só tenha qualquer quantidade de azul quando o bit de confirmação for 1 e o LED direito esteja apagado.
 
 Em geral, só um dos LEDs pode estar acesso, no máximo.
 
