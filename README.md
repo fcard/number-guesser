@@ -15,7 +15,7 @@ Tabela Verdade:
 | 1 | 0 | 0 |
 | 1 | 1 | 1 |
 
-Mapa de karnough:
+Mapa de karnaugh:
 
 <img width="368" height="358" alt="image" src="https://github.com/user-attachments/assets/d114cf89-a44b-495b-9023-dcb71df4b1fd" />
 
@@ -54,7 +54,7 @@ Tabela Verdade:
 | 1 | 1 | 0 | 0 | 0 |
 | 1 | 1 | 1 | 1 | 1 |
 
-Mapas de Karnough:
+Mapas de Karnaugh:
 
 <img width="735" height="338" alt="image" src="https://github.com/user-attachments/assets/6df3930c-7051-46ba-888a-1def999bcc48" />
 
