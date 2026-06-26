@@ -72,7 +72,7 @@ Primeiramente, usamos splitters para separarmos os bits de cada entrada, então 
 
 ## Diferença
 
-<img width="1374" height="751" alt="image" src="https://github.com/user-attachments/assets/fac291ab-0959-4763-977c-5e83e56bebb0" />
+<img width="1303" height="797" alt="image" src="https://github.com/user-attachments/assets/e4537f01-c10b-4f11-993d-fcc1e4a3c699" />
 
 Dadas entradas X e Y de 4 bits, a diferença tem como saída X - Y se X &geq; Y e tem como saída Y - X se X < Y.
 
@@ -86,5 +86,45 @@ Dada uma entrada de 4 bits X = X<sub>3</sub>X<sub>2</sub>X<sub>1</sub>X<sub>0</s
 
 Faz-se um encadeamento de 4 extensores de bit de tipo input, cada um recebendo o anterior como entrada principal (o primeiro recebendo a constante 0 de 4 bits) tendo como saída um bit a mais que sua entrada, e como entrada secundária um dos bits da entrada do circuito.
 
+## LEDs
+
+O display de 7 segmentos é compostos por 7 leds identificados pelas letras A, B, C, D, E, F e G. Foi criado um circuito para cada led, de modo que ficasse ligado apenas os leds que formassem o número ou a letra desejada, que no caso seria de 0 ate 9 ou A ate F.
+
+Tabela Verdade:
+
+| X<sub>3</sub> | X<sub>2</sub> | X<sub>1</sub> | X<sub>0</sub> | A | B | C | D | E | F | G |
+|---------------|---------------|---------------|---------------|---|---|---|---|---|---|---|
+| 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 0 |
+| 0 | 0 | 0 | 1 | 0 | 1 | 1 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 1 | 0 | 1 | 1 | 0 | 1 | 1 | 0 | 1 |
+| 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 0 | 0 | 1 |
+| 0 | 1 | 0 | 0 | 0 | 1 | 1 | 0 | 0 | 1 | 1 |
+| 0 | 1 | 0 | 1 | 1 | 0 | 1 | 1 | 0 | 1 | 1 |
+| 0 | 1 | 1 | 0 | 1 | 0 | 1 | 1 | 1 | 1 | 1 |
+| 0 | 1 | 1 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 0 |
+| 1 | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+| 1 | 0 | 0 | 1 | 1 | 1 | 1 | 0 | 0 | 1 | 1 |
+| 1 | 0 | 1 | 0 | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
+| 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 | 1 | 1 | 1 |
+| 1 | 1 | 0 | 0 | 1 | 0 | 0 | 1 | 1 | 1 | 0 |
+| 1 | 1 | 0 | 1 | 0 | 1 | 1 | 1 | 1 | 0 | 1 |
+| 1 | 1 | 1 | 0 | 1 | 0 | 0 | 1 | 1 | 1 | 1 |
+| 1 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | 1 | 1 | 1 |
+
+O circuito foi criado com a ferramenta de analise combinatória do Logisim.
+
+## Guess
+
+<img width="1289" height="934" alt="image" src="https://github.com/user-attachments/assets/379f1d17-1730-466b-aeff-eb5d2c8eaf56" />
+
+O circuito principal se tratando do comportamento do jogo. Tem como entrada o "chute" do jogador (número a ser comparado com o número secreto interno), um bit de confirmação e um bit que reinicia o número secreto. As saída são:
+
+O bit que liga o LED direito: 1 quando o chute do jogador é exatamente igual ao número secreto e o bit de confirmação é 1. Simplesmente usa-se o comparador de 4 bits para comparar os números e usa-se um AND entre o resultadado da comparação e o bit de confirmação.
+
+A cor vermelha do LED esquerdo: O LED brilha com cor mais vermelha quanto menor a diferença. Usamos um subtrator de 4 bits e um leftshifter de 4 bits para fazer com que o valor final seja `(15 - D) << 4`, ou `(15 - D) * 16`, onde D é a diferença. Usamos um AND para que o LED só tenha qualquer quantidade de vermelho quando o bit de confirmação for 1 e o LED direito esteja apagado.
+
+A cor azul do LED esquerdo: O LED brilha com cor mais azul quanto maior a diferença. Usamos um leftshifter de 4 bits para fazer com que o valor final seja `D << 4`, ou `D * 16`, onde D é a diferença. Usamos um AND para que o LED só tenha qualquer quantidade de azul quando o bit de confirmação for 1 e o LED direito esteja apagado.
+
+Em geral, só um dos LEDs pode estar acesso, no máximo.
 
 
